@@ -11,6 +11,7 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import markdownToHtml from '../../lib/markdownToHtml'
 import PostType from '../../types/post'
+import FontLoader from '../../components/font-loader'
 
 type Props = {
   post: PostType
@@ -25,6 +26,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
   }
   return (
     <Layout preview={preview}>
+      <FontLoader />
       <Container>
         <Header />
         {router.isFallback ? (
