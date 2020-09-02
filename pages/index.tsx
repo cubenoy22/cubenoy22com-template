@@ -7,6 +7,7 @@ import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Post from '../types/post'
+import { useEffect } from 'react'
 
 type Props = {
   allPosts: Post[]
@@ -15,6 +16,19 @@ type Props = {
 const Index = ({ allPosts }: Props) => {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
+
+  if (typeof window !== 'undefined') {
+    useEffect(() => {
+      import('webfontloader').then(WebFont => {
+        WebFont.load({
+          google: {
+            families: ['Noto Sans JP:100']
+          }
+        })
+      })
+    }, [])
+  }  
+
   return (
     <>
       <Layout>

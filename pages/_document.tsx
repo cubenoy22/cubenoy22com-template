@@ -5,10 +5,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
-          <link 
-            href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100"
-            rel="stylesheet"
-          />
         </Head>
         <body className="font-body font-hairline">
           <Main />
