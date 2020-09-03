@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "gen:tags": "ts-node tags.ts"
+    "gen": "npm run gen:tags && npm run gen:ogimages",
+    "gen:tags": "ts-node --files tags.ts",
+    "gen:ogimages": "ts-node --files ogimages.ts"
   },
   "type": "module",
   "name": "generators",
@@ -11,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "catchy-image": "^0.1.6",
     "ts-node": "^9.0.0"
   }
 }

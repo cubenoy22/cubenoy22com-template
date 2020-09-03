@@ -34,3 +34,4 @@ yarn-error.log*
 .vercel
 generators/node_modules/
 
+generators/assets/fonts/

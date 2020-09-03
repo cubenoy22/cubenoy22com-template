@@ -5,7 +5,7 @@ type PostType = {
   coverImage: string
   excerpt: string
   tags: string[]
-  ogImage: {
+  ogImage?: {
     url: string
   }
   content: string
