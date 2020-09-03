@@ -12,12 +12,16 @@
     "date-fns": "2.10.0",
     "gray-matter": "4.0.2",
     "highlight.js": "^10.1.2",
+    "imagemin-mozjpeg": "^9.0.0",
     "next": "latest",
+    "next-compose-plugins": "^2.2.0",
+    "next-optimized-images": "^2.6.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "remark": "11.0.2",
     "remark-highlight.js": "^6.0.0",
     "remark-html": "10.0.0",
+    "responsive-loader": "^2.0.2",
     "typescript": "^3.9.2",
     "webfontloader": "1.6.x"
   },
@@ -29,6 +33,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/webfontloader": "1.6.x",
     "postcss-preset-env": "^6.7.0",
+    "sharp": "^0.26.0",
     "tailwindcss": "^1.4.0"
   },
   "license": "MIT"
