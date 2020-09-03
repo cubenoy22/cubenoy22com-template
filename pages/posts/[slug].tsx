@@ -11,16 +11,20 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import markdownToHtml from '../../lib/markdownToHtml'
 import PostType from '../../types/post'
+import { getCachedPostsForTag } from '../../lib/tags'
+import Link from 'next/link'
 
 type Props = {
-  post: PostType
+  post: PostType,
+  otherPosts?: Pick<PostType, 'slug' | 'title'>[]
 }
 
-const Post = ({ post }: Props) => {
+const Post = ({ post, otherPosts }: Props) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+
   return (
     <Layout>
       <Container>
@@ -29,7 +33,7 @@ const Post = ({ post }: Props) => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article className="mb-32">
+            <article className="mb-8">
               <Head>
                 <title>
                   {post.title} | Next.js Blog Example with {CMS_NAME}
@@ -39,6 +43,22 @@ const Post = ({ post }: Props) => {
               <PostHeader post={post} />
               <PostBody content={post.content} />
             </article>
+            {
+              otherPosts && otherPosts.length > 0 ? (
+                <div className="max-w-2xl mx-auto mb-24">
+                  <h3 className='text-3xl'>{`他の ${post.tags[0]} タグの記事`}</h3>
+                  <div className='flex flex-col'>
+                  {
+                    otherPosts.map(({ slug, title }) => (
+                      <Link key={slug} href={`/posts/${slug}`}><a className='text-blue-600'>{title}</a></Link>
+                    ))
+                  }
+                  </div>
+                </div>
+              ) : (
+                <div className='mb-24' />
+              )
+            }
           </>
         )}
       </Container>
@@ -65,6 +85,10 @@ export async function getStaticProps({ params }: Params) {
     'tags'
   ])
   const content = await markdownToHtml(post.content || '')
+  const otherPosts = post?.tags?.[0] && 
+    getCachedPostsForTag(post.tags[0])
+    .filter(({ slug }) => slug !== post.slug)
+    .slice(0, 10) // Up to 10 articles
 
   return {
     props: {
@@ -72,6 +96,7 @@ export async function getStaticProps({ params }: Params) {
         ...post,
         content,
       },
+      otherPosts
     },
   }
 }
