@@ -24,3 +24,7 @@
 .markdown a:hover {
   @apply underline;
 }
+
+.markdown code {
+  @apply text-sm;
+}
