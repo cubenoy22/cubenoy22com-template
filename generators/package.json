@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "gen:tags": "ts-node tags.ts"
+  },
+  "type": "module",
+  "name": "generators",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ts-node": "^9.0.0"
+  }
+}
