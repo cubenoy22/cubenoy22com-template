@@ -8,7 +8,7 @@ type Props = {
 }
 
 const HeroPost = ({
-  post: { title, coverImage, slug, date, excerpt }
+  post: { title, coverImage, slug, date, excerpt, tags }
 }: Props) => {
   return (
     <section>
@@ -25,6 +25,13 @@ const HeroPost = ({
           <div className="mb-4 md:mb-0 text-lg">
             <DateFormater dateString={date} />
           </div>
+          <div className="flex flex-wrap">{
+            tags.map(t => (
+              <Link href={`/tags/${t}`} key={t}>
+                <a className="hover:underline text-blue-600 pr-2">{t}</a>
+              </Link>
+            ))
+          }</div>
         </div>
         <div>
           <p className="text-lg leading-relaxed mb-4">{excerpt}</p>

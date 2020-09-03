@@ -14,17 +14,15 @@ import PostType from '../../types/post'
 
 type Props = {
   post: PostType
-  morePosts: PostType[]
-  preview?: boolean
 }
 
-const Post = ({ post, morePosts, preview }: Props) => {
+const Post = ({ post }: Props) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
   return (
-    <Layout preview={preview}>
+    <Layout>
       <Container>
         <Header />
         {router.isFallback ? (
@@ -38,11 +36,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 </title>
                 <meta property="og:image" content={post.ogImage.url} />
               </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-              />
+              <PostHeader post={post} />
               <PostBody content={post.content} />
             </article>
           </>
@@ -68,6 +62,7 @@ export async function getStaticProps({ params }: Params) {
     'content',
     'ogImage',
     'coverImage',
+    'tags'
   ])
   const content = await markdownToHtml(post.content || '')
 

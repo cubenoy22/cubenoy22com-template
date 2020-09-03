@@ -1,14 +1,14 @@
 import DateFormater from './date-formater'
 import CoverImage from './cover-image'
 import PostTitle from './post-title'
+import PostType from '../types/post'
+import Link from 'next/link'
 
 type Props = {
-  title: string
-  coverImage: string
-  date: string
+  post: PostType
 }
 
-const PostHeader = ({ title, coverImage, date }: Props) => {
+const PostHeader: React.FC<Props> = ({ post: { title, coverImage, date, tags }}) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -18,6 +18,13 @@ const PostHeader = ({ title, coverImage, date }: Props) => {
       <div className="max-w-2xl mx-auto">
         <div className="mb-6 text-lg">
           <DateFormater dateString={date} />
+          <div className="flex flex-wrap">{
+            tags.map(t => (
+              <Link href={`/tags/${t}`} key={t}>
+                <a className="hover:underline text-blue-600 pr-2">{t}</a>
+              </Link>
+            ))
+          }</div>
         </div>
       </div>
     </>

@@ -1,24 +1,21 @@
 import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
+import PostType from '../types/post'
 
-const postsDirectory = join(process.cwd(), '_posts')
+const postsDirectory = join(process.cwd().replace(/generators$/, ''), '_posts')
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory)
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug(slug: string, fields: (keyof PostType)[] = []): Partial<PostType> {
   const realSlug = slug.replace(/\.md$/, '')
   const fullPath = join(postsDirectory, `${realSlug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
-  type Items = {
-    [key: string]: string
-  }
-
-  const items: Items = {}
+  const items: Partial<PostType> = {}
 
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
@@ -37,11 +34,11 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   return items
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts(fields: (keyof PostType)[]): Partial<PostType>[] {
   const slugs = getPostSlugs()
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
     // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+    .sort((post1, post2) => (post1.date! > post2.date! ? -1 : 1))
   return posts
 }
