@@ -4,8 +4,8 @@ import { resolve } from 'path'
 import { TagInfo } from '../types/taginfo'
 
 (async () => {
-  const posts = getAllPosts(['slug', 'tags'])
-  const tags: { [key: string]: string[] } = {}
+  const posts = getAllPosts(['slug', 'tags', 'title'])
+  const tags: { [key: string]: { slug: string, title: string }[] } = {}
   
   posts.forEach(post => {
     post.tags!.forEach(tag => {
@@ -15,7 +15,10 @@ import { TagInfo } from '../types/taginfo'
       if (!tags[tag]) {
         tags[tag] = []
       }
-      tags[tag].push(post.slug!)
+      tags[tag].push({
+        slug: post.slug!,
+        title: post.title!
+      })
     })
   })
   

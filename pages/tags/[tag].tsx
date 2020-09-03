@@ -1,15 +1,16 @@
 import Layout from '../../components/layout'
 import Header from '../../components/header'
-import { getTagInfos, getSlugsForTag } from '../../lib/tags'
+import { getTagInfos, getCachedPostsForTag } from '../../lib/tags'
 import Container from '../../components/container'
 import Link from 'next/link'
+import PostType from '../../types/post'
 
 interface Props {
   tag: string
-  slugs: string[]
+  posts: Pick<PostType, 'slug' | 'title'>[]
 }
 
-const PostsByTag: React.FC<Props> = ({ tag, slugs }) => {
+const PostsByTag: React.FC<Props> = ({ tag, posts }) => {
   return (
     <Layout>
       <Container>
@@ -17,8 +18,8 @@ const PostsByTag: React.FC<Props> = ({ tag, slugs }) => {
         <h2 className='text-3xl'>{tag}</h2>
         <div className='flex flex-col'>
         {
-          slugs.map(slug => (
-            <Link key={slug} href={`/posts/${slug}`}><a className='text-blue-600'>{slug}</a></Link>
+          posts.map(({ slug, title }) => (
+            <Link key={slug} href={`/posts/${slug}`}><a className='text-blue-600'>{title}</a></Link>
           ))
         }
         </div>
@@ -39,7 +40,7 @@ export async function getStaticProps({ params: { tag } }: Params): Promise<{ pro
   return {
     props: {
       tag,
-      slugs: getSlugsForTag(tag)
+      posts: getCachedPostsForTag(tag)
     }
   }
 }
