@@ -1,6 +1,10 @@
 module.exports = {
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
+    screens: {
+      'md': '768px',
+      'lg': '1024px',
+    },
     extend: {
       colors: {
         'accent-1': '#FAFAFA',
