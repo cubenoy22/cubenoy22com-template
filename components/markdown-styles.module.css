@@ -16,3 +16,11 @@
 .markdown h3 {
   @apply text-2xl mt-8 mb-4 leading-snug;
 }
+
+.markdown a {
+  @apply text-blue-600;
+}
+
+.markdown a:hover {
+  @apply underline;
+}
