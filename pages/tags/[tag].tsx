@@ -15,13 +15,16 @@ const PostsByTag: React.FC<Props> = ({ tag, posts }) => {
     <Layout>
       <Container>
         <Header />
-        <h2 className='text-3xl'>{tag}</h2>
+        <h2 className='text-3xl'>タグ: {tag}</h2>
         <div className='flex flex-col'>
         {
           posts.map(({ slug, title }) => (
             <Link key={slug} href={`/posts/${slug}`}><a className='text-blue-600'>{title}</a></Link>
           ))
         }
+        </div>
+        <div className='mt-4'>
+          <Link href='/tags'><a className='text-blue-600 text-xl'>すべてのタグ</a></Link>
         </div>
       </Container>
     </Layout>
