@@ -4,6 +4,8 @@ import { getTagInfos } from "../../lib/tags"
 import Container from "../../components/container"
 import Link from "next/link"
 import { TagInfo } from "../../types/taginfo"
+import Head from "next/head"
+import { CMS_NAME } from "../../lib/constants"
 
 interface Props {
   tagInfos: TagInfo[]
@@ -14,6 +16,11 @@ const Tags: React.FC<Props> = ({ tagInfos }) => {
     <Layout>
       <Container>
       <Header />
+      <Head>
+        <title>
+          タグ一覧 | {CMS_NAME}
+        </title>
+      </Head>
       <h2 className='text-3xl'>タグ一覧</h2>
       <div className='flex flex-wrap flex-col'>
       {

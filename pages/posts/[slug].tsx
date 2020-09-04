@@ -36,7 +36,7 @@ const Post = ({ post, otherPosts }: Props) => {
             <article className="mb-8">
               <Head>
                 <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
+                  {post.title} | {CMS_NAME}
                 </title>
                 <meta property="og:image" content={post.ogImage && post.ogImage.url || `/ogimages/${post.slug}.png`} />
               </Head>

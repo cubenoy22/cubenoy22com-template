@@ -4,6 +4,8 @@ import { getTagInfos, getCachedPostsForTag } from '../../lib/tags'
 import Container from '../../components/container'
 import Link from 'next/link'
 import PostType from '../../types/post'
+import Head from 'next/head'
+import { CMS_NAME } from '../../lib/constants'
 
 interface Props {
   tag: string
@@ -15,6 +17,11 @@ const PostsByTag: React.FC<Props> = ({ tag, posts }) => {
     <Layout>
       <Container>
         <Header />
+        <Head>
+          <title>
+            {tag} | {CMS_NAME}
+          </title>
+        </Head>
         <h2 className='text-3xl'>タグ: {tag}</h2>
         <div className='flex flex-col'>
         {
