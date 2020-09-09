@@ -1,6 +1,5 @@
 import Footer from './footer'
 import Meta from './meta'
-import FontLoader from './font-loader'
 
 type Props = {
   children: React.ReactNode
@@ -11,7 +10,6 @@ const Layout = ({ children }: Props) => {
     <div className="flex flex-col min-h-screen">
       <Meta />
       <div className="flex-grow">
-        <FontLoader />
         <main>{children}</main>
       </div>
       <div className="flex-grow-0">
