@@ -7,6 +7,7 @@ import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Post from '../types/post'
+import { SEO } from '../components/SEO'
 
 type Props = {
   allPosts: Post[]
@@ -22,6 +23,7 @@ const Index = ({ allPosts }: Props) => {
         <Head>
           <title>{CMS_NAME}</title>
         </Head>
+        <SEO />
         <Container>
           <Intro />
           {heroPost && (

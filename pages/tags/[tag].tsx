@@ -6,6 +6,7 @@ import Link from 'next/link'
 import PostType from '../../types/post'
 import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
+import { SEO } from '../../components/SEO'
 
 interface Props {
   tag: string
@@ -16,12 +17,11 @@ const PostsByTag: React.FC<Props> = ({ tag, posts }) => {
   return (
     <Layout>
       <Container>
+        <SEO 
+          title={`${tag} | ${CMS_NAME}`}
+          description={`posts with tag: ${tag}`}
+        />
         <Header />
-        <Head>
-          <title>
-            {tag} | {CMS_NAME}
-          </title>
-        </Head>
         <h2 className='text-3xl'>タグ: {tag}</h2>
         <div className='flex flex-col'>
         {

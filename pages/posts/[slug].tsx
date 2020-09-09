@@ -7,12 +7,12 @@ import PostHeader from '../../components/post-header'
 import Layout from '../../components/layout'
 import { getPostBySlug, getAllPosts } from '../../lib/api'
 import PostTitle from '../../components/post-title'
-import Head from 'next/head'
-import { CMS_NAME } from '../../lib/constants'
+import { CMS_NAME, SITE_BASE_URL } from '../../lib/constants'
 import markdownToHtml from '../../lib/markdownToHtml'
 import PostType from '../../types/post'
 import { getCachedPostsForTag } from '../../lib/tags'
 import Link from 'next/link'
+import { SEO } from '../../components/SEO'
 
 type Props = {
   post: PostType,
@@ -29,17 +29,16 @@ const Post = ({ post, otherPosts }: Props) => {
     <Layout>
       <Container>
         <Header />
+        <SEO
+          title={`${post.title} | ${CMS_NAME}`}
+          ogImage={post.ogImage?.url || `${SITE_BASE_URL}ogimages/${post.slug}.png`}
+          description={post.excerpt}
+        />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
             <article className="mb-8">
-              <Head>
-                <title>
-                  {post.title} | {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.ogImage && post.ogImage.url || `/ogimages/${post.slug}.png`} />
-              </Head>
               <PostHeader post={post} />
               <PostBody content={post.content} />
             </article>
@@ -82,7 +81,8 @@ export async function getStaticProps({ params }: Params) {
     'content',
     'ogImage',
     'coverImage',
-    'tags'
+    'tags',
+    'excerpt'
   ])
   const content = await markdownToHtml(post.content || '')
   const otherPosts = post?.tags?.[0] && 
