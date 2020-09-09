@@ -8,14 +8,16 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Meta />
-      <div className="min-h-screen">
+      <div className="flex-grow">
         <FontLoader />
         <main>{children}</main>
       </div>
-      <Footer />
-    </>
+      <div className="flex-grow-0">
+        <Footer />
+      </div>
+    </div>
   )
 }
 
