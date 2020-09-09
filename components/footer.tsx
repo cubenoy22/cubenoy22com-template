@@ -1,4 +1,5 @@
 import Container from './container'
+import { COPYRIGHT } from '../lib/constants'
 
 const Footer = () => {
   return (
@@ -9,7 +10,7 @@ const Footer = () => {
             WIP
           </div>
           <div>
-            (c) cubenoy22.com
+            {COPYRIGHT}
           </div>
         </div>
       </Container>
