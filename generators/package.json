@@ -4,7 +4,6 @@
     "gen:tags": "ts-node --files tags.ts",
     "gen:ogimages": "ts-node --files ogimages.ts"
   },
-  "type": "module",
   "name": "generators",
   "version": "1.0.0",
   "main": "index.js",
