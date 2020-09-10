@@ -44,7 +44,7 @@ const Post = ({ post, otherPosts }: Props) => {
             </article>
             {
               otherPosts && otherPosts.length > 0 ? (
-                <div className="max-w-2xl mx-auto mb-24">
+                <div className="max-w-4xl mx-auto mb-24">
                   <h3 className='text-3xl'>{`他の ${post.tags[0]} タグの記事`}</h3>
                   <div className='flex flex-col'>
                   {
