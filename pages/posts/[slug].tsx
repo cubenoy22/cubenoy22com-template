@@ -11,12 +11,12 @@ import { CMS_NAME, SITE_BASE_URL } from '../../lib/constants'
 import markdownToHtml from '../../lib/markdownToHtml'
 import PostType from '../../types/post'
 import { getCachedPostsForTag } from '../../lib/tags'
-import Link from 'next/link'
 import { SEO } from '../../components/SEO'
+import PostPreview from '../../components/post-preview'
 
 type Props = {
   post: PostType,
-  otherPosts?: Pick<PostType, 'slug' | 'title'>[]
+  otherPosts?: PostType[]
 }
 
 const Post = ({ post, otherPosts }: Props) => {
@@ -45,11 +45,11 @@ const Post = ({ post, otherPosts }: Props) => {
             {
               otherPosts && otherPosts.length > 0 ? (
                 <div className="max-w-4xl mx-auto mb-24">
-                  <h3 className='text-3xl'>{`他の ${post.tags[0]} タグの記事`}</h3>
+                  <h3 className='text-3xl mb-4'>{`他の ${post.tags[0]} タグの記事`}</h3>
                   <div className='flex flex-col'>
                   {
-                    otherPosts.map(({ slug, title }) => (
-                      <Link key={slug} href={`/posts/${slug}`}><a className='text-blue-600'>{title}</a></Link>
+                    otherPosts.map((post) => (
+                      <PostPreview post={post} />
                     ))
                   }
                   </div>
