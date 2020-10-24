@@ -47,7 +47,7 @@ async function genImage(slug: string, title: string, coverImage: string | undefi
         weight: '300',
       },
     ],
-    iconFile: require.resolve('./assets/avatar.jpg'),
+    iconFile: require.resolve('./assets/avatar.png'),
     timeout: 10000,
   }
   try {
