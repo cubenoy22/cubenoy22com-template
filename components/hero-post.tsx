@@ -15,7 +15,7 @@ const HeroPost = ({
       <div className="mb-8 md:mb-0 md:mr-8 md:w-1/2">
         <CoverImage title={title} src={coverImage} slug={slug} />
       </div>
-      <div className="md:grid md:w-1/2 md:row-gap-8 lg:row-gap-16 lg:row-gap-8 mb-20 md:mb-0">
+      <div className="md:grid md:w-1/2 md:row-gap-2 lg:row-gap-4 mb-20 md:mb-0">
         <div>
           <h3 className="mb-4 text-3xl lg:text-6xl leading-tight">
             <Link as={`/posts/${slug}`} href="/posts/[slug]">
@@ -34,7 +34,7 @@ const HeroPost = ({
           }</div>
         </div>
         <div>
-          <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+          <p className="text-lg mb-4">{excerpt}</p>
         </div>
       </div>
     </section>
