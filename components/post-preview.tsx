@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Post from '../types/post'
 
 type Props = {
-  post: Post
+  post: Pick<Post, 'title' | 'coverImage' | 'date' | 'excerpt' | 'slug' | 'tags'>
 }
 
 const PostPreview = ({

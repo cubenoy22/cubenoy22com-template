@@ -6,6 +6,7 @@ import Link from "next/link"
 import { TagInfo } from "../../types/taginfo"
 import { CMS_NAME } from "../../lib/constants"
 import { SEO } from "../../components/SEO"
+import PostTitle from '../../components/post-title'
 
 interface Props {
   tagInfos: TagInfo[]
@@ -19,12 +20,12 @@ const Tags: React.FC<Props> = ({ tagInfos }) => {
         <SEO
           title={`タグ一覧 | ${CMS_NAME}`}
         />
-        <h2 className='text-3xl'>タグ一覧</h2>
-        <div className='flex flex-wrap flex-col'>
+        <PostTitle>タグ一覧</PostTitle>
+        <div className='flex flex-wrap flex-col mb-8'>
         {
           tagInfos.map(tagInfo => (
             <Link href={`/tags/${tagInfo.name}`} key={tagInfo.name}>
-              <a className='text-blue-600 ml-2'>{`${tagInfo.name} (${tagInfo.numberOfPosts})`}</a>
+              <a className='hover:underline text-lg'>{`${tagInfo.name} (${tagInfo.numberOfPosts})`}</a>
               </Link>
           ))
         }

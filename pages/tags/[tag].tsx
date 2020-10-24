@@ -4,13 +4,14 @@ import { getTagInfos, getCachedPostsForTag } from '../../lib/tags'
 import Container from '../../components/container'
 import Link from 'next/link'
 import PostType from '../../types/post'
-import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import { SEO } from '../../components/SEO'
+import PostPreview from '../../components/post-preview'
+import PostTitle from '../../components/post-title'
 
 interface Props {
   tag: string
-  posts: Pick<PostType, 'slug' | 'title'>[]
+  posts: PostType[]
 }
 
 const PostsByTag: React.FC<Props> = ({ tag, posts }) => {
@@ -22,16 +23,18 @@ const PostsByTag: React.FC<Props> = ({ tag, posts }) => {
           description={`posts with tag: ${tag}`}
         />
         <Header />
-        <h2 className='text-3xl'>タグ: {tag}</h2>
+        <PostTitle>タグ: {tag}</PostTitle>
         <div className='flex flex-col'>
         {
-          posts.map(({ slug, title }) => (
-            <Link key={slug} href={`/posts/${slug}`}><a className='text-blue-600'>{title}</a></Link>
+          posts.map((post) => (
+            <PostPreview post={post} />
           ))
         }
         </div>
         <div className='mt-4'>
-          <Link href='/tags'><a className='text-blue-600 text-xl'>すべてのタグ</a></Link>
+          <Link href='/tags'>
+            <a className='text-xl hover:underline'>すべてのタグ</a>
+          </Link>
         </div>
       </Container>
     </Layout>

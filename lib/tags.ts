@@ -9,6 +9,6 @@ export function getTagInfos(): TagInfo[] {
   return JSON.parse(fs.readFileSync(join(basePath, 'taginfo.json')).toString())
 }
 
-export function getCachedPostsForTag(tag: string): Pick<PostType, 'slug' | 'title'>[] {
+export function getCachedPostsForTag(tag: string): PostType[] {
   return JSON.parse(fs.readFileSync(join(basePath, `tags/${tag}.json`)).toString())
 }

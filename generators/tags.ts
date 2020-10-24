@@ -2,10 +2,11 @@ import fs from 'fs'
 import { getAllPosts } from '../lib/api'
 import { resolve } from 'path'
 import { TagInfo } from '../types/taginfo'
+import PostType from '../types/post'
 
 (async () => {
-  const posts = getAllPosts(['slug', 'tags', 'title'])
-  const tags: { [key: string]: { slug: string, title: string }[] } = {}
+  const posts = getAllPosts(['slug', 'tags', 'title', 'coverImage', 'date', 'excerpt'])
+  const tags: { [key: string]: Partial<PostType>[] } = {}
   
   posts.forEach(post => {
     post.tags!.forEach(tag => {
@@ -15,10 +16,7 @@ import { TagInfo } from '../types/taginfo'
       if (!tags[tag]) {
         tags[tag] = []
       }
-      tags[tag].push({
-        slug: post.slug!,
-        title: post.title!
-      })
+      tags[tag].push(Object.assign({}, post, { tags: [] }))
     })
   })
   
