@@ -1,8 +1,5 @@
 module.exports = {
-  purge: {
-    mode: 'all',
-    contents: ['./components/**/*.tsx', './pages/**/*.tsx']
-  },
+  purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   plugins: [
     require('@tailwindcss/typography'),
   ],
