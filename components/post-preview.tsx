@@ -2,6 +2,7 @@ import DateFormater from './date-formater'
 import CoverImage from './cover-image'
 import Link from 'next/link'
 import Post from '../types/post'
+import TagFeed from './tag-feed'
 
 type Props = {
   post: Pick<Post, 'title' | 'coverImage' | 'date' | 'excerpt' | 'slug' | 'tags'>
@@ -24,14 +25,8 @@ const PostPreview = ({
         <div className="text-lg">
           <DateFormater dateString={date} />
         </div>
-        <div className="flex flex-wrap mb-4">{
-          tags.map(t => (
-            <Link href={`/tags/${t}`} key={t}>
-              <a className="hover:underline text-blue-600 pr-2">{t}</a>
-            </Link>
-          ))
-        }</div>
-        <p className="text-md mb-4">{excerpt}</p>
+        <TagFeed tags={tags} />
+        <p className="mt-4 mb-4">{excerpt}</p>
       </div>
     </div>
   )

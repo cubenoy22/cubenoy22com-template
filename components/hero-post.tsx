@@ -2,6 +2,8 @@ import DateFormater from './date-formater'
 import CoverImage from './cover-image'
 import Link from 'next/link'
 import Post from '../types/post'
+import Tag from './tag'
+import TagFeed from './tag-feed'
 
 type Props = {
   post: Post
@@ -22,19 +24,13 @@ const HeroPost = ({
               <a className="hover:underline">{title}</a>
             </Link>
           </h3>
-          <div className="mb-4 md:mb-0 text-lg">
+          <div className="text-lg">
             <DateFormater dateString={date} />
           </div>
-          <div className="flex flex-wrap">{
-            tags.map(t => (
-              <Link href={`/tags/${t}`} key={t}>
-                <a className="hover:underline text-blue-600 pr-2">{t}</a>
-              </Link>
-            ))
-          }</div>
+          <TagFeed tags={tags} />
         </div>
         <div>
-          <p className="text-lg mb-4">{excerpt}</p>
+          <p className="text-lg mt-4 md:mt-0 mb-4">{excerpt}</p>
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ import { CMS_NAME } from '../../lib/constants'
 import { SEO } from '../../components/SEO'
 import PostPreview from '../../components/post-preview'
 import PostTitle from '../../components/post-title'
+import Tag from '../../components/tag'
 
 interface Props {
   tag: string
@@ -23,7 +24,7 @@ const PostsByTag: React.FC<Props> = ({ tag, posts }) => {
           description={`posts with tag: ${tag}`}
         />
         <Header />
-        <PostTitle>タグ: {tag}</PostTitle>
+        <PostTitle>タグ: <Tag tag={tag} /></PostTitle>
         <div className='flex flex-col'>
         {
           posts.map((post) => (
@@ -31,9 +32,9 @@ const PostsByTag: React.FC<Props> = ({ tag, posts }) => {
           ))
         }
         </div>
-        <div className='mt-4'>
+        <div className='mt-4 mb-8'>
           <Link href='/tags'>
-            <a className='text-xl hover:underline'>すべてのタグ</a>
+            <a className='text-3xl underline'>すべてのタグ</a>
           </Link>
         </div>
       </Container>

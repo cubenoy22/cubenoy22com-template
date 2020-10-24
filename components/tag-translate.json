@@ -1,0 +1,17 @@
+{
+  "aws": "AWS",
+  "docker": "Docker",
+  "lightsail": "Lightsail",
+  "domain_driven_design": "ドメイン駆動設計",
+  "eric_evans": "エリック・エヴァンス",
+  "book": "書籍",
+  "frontend": "フロントエンド",
+  "javascript": "JavaScript",
+  "react": "React",
+  "nextjs": "Next.js",
+  "tailwindcss": "Tailwind CSS",
+  "qiita": "Qiita",
+  "music": "音楽",
+  "song": "曲",
+  "soundcloud": "SoundCloud"
+}

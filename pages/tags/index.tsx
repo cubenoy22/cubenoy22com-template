@@ -7,6 +7,7 @@ import { TagInfo } from "../../types/taginfo"
 import { CMS_NAME } from "../../lib/constants"
 import { SEO } from "../../components/SEO"
 import PostTitle from '../../components/post-title'
+import Tag from "../../components/tag"
 
 interface Props {
   tagInfos: TagInfo[]
@@ -25,8 +26,8 @@ const Tags: React.FC<Props> = ({ tagInfos }) => {
         {
           tagInfos.map(tagInfo => (
             <Link href={`/tags/${tagInfo.name}`} key={tagInfo.name}>
-              <a className='hover:underline text-lg'>{`${tagInfo.name} (${tagInfo.numberOfPosts})`}</a>
-              </Link>
+              <a className='hover:underline text-lg'><Tag tag={tagInfo.name} />&nbsp;{`(${tagInfo.numberOfPosts})`}</a>
+            </Link>
           ))
         }
         </div>
