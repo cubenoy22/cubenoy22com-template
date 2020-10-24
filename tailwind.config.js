@@ -1,5 +1,8 @@
 module.exports = {
-  purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
+  purge: {
+    mode: 'all',
+    contents: ['./components/**/*.tsx', './pages/**/*.tsx']
+  },
   plugins: [
     require('@tailwindcss/typography'),
   ],
@@ -7,6 +10,15 @@ module.exports = {
     screens: {
       'md': '768px',
       'lg': '1024px',
+    },
+    typography: {
+      default: {
+        css: {
+          a: {
+            wordBreak: 'break-all'
+          }
+        }
+      }
     },
     extend: {
       colors: {
