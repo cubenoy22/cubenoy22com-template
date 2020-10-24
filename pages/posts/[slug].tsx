@@ -82,7 +82,8 @@ export async function getStaticProps({ params }: Params) {
     'ogImage',
     'coverImage',
     'tags',
-    'excerpt'
+    'excerpt',
+    'qiitaLink',
   ])
   const content = await markdownToHtml(post.content || '')
   const otherPosts = post?.tags?.[0] && 

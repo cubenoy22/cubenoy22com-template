@@ -3,15 +3,17 @@ import CoverImage from './cover-image'
 import PostTitle from './post-title'
 import PostType from '../types/post'
 import TagFeed from './tag-feed'
+import QiitaInfo from './qiita-info'
 
 type Props = {
   post: PostType
 }
 
-const PostHeader: React.FC<Props> = ({ post: { title, coverImage, date, tags }}) => {
+const PostHeader: React.FC<Props> = ({ post: { title, coverImage, date, tags, qiitaLink }}) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
+      <QiitaInfo qiitaLink={qiitaLink} />
       <div className="mb-8 md:mb-16 sm:mx-0">
         <CoverImage title={title} src={coverImage} />
       </div>

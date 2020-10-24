@@ -8,7 +8,8 @@ type PostType = {
   ogImage?: {
     url: string
   }
-  content: string
+  content: string,
+  qiitaLink?: string,
 }
 
 export default PostType
