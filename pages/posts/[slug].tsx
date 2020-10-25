@@ -13,6 +13,7 @@ import PostType from '../../types/post'
 import { getCachedPostsForTag } from '../../lib/tags'
 import { SEO } from '../../components/SEO'
 import PostPreview from '../../components/post-preview'
+import Tag from '../../components/tag'
 
 type Props = {
   post: PostType,
@@ -45,7 +46,7 @@ const Post = ({ post, otherPosts }: Props) => {
             {
               otherPosts && otherPosts.length > 0 ? (
                 <div className="max-w-4xl mx-auto mb-24">
-                  <h3 className='text-3xl mb-4'>{`他の ${post.tags[0]} タグの記事`}</h3>
+                  <h3 className='text-3xl mb-4'>他の&nbsp;<Tag tag={post.tags[0]} />&nbsp;タグの記事</h3>
                   <div className='flex flex-col'>
                   {
                     otherPosts.map((post) => (
